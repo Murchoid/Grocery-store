@@ -1,3 +1,8 @@
+/* In this file i used regex to validate and sanitize the users input
+    research more about regex to see the common regex expressions,
+    I also used the inbuilt validtion offerd  by mongodb to validate the inputs using regex
+*/
+
 const mongoose = require('mongoose');
 
 
