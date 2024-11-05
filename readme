@@ -7,9 +7,10 @@ Use git, so that ukimess you can always go back to the previous version,
 also so that you can know how to push the code to github for collaboration
 we will monitor and see if its easier mtu kupush duirectly ama atume file kwa group then mtu mmoja azicombine.
 
-for the ones working on the front end,,, your work is only in the views folder all the other outsode is for the backend developers so.... get started,, do your best to do your part, backend devs will do their best to do theirs.
+for the ones working on the front end,,, your work is only in the frontend folder all the other outsode is for the backend developers so.... get started,, do your best to do your part, backend devs will do their best to do theirs.
 
 For the ones working on the home and cart sepcifically, work closely with the backend developer, but in the meantime use dummy data, dummy images and lorem ipsum , your work is to design the UI, the logic will be handled by the backend dev, but work closely with them so that it can be harmonious.
 
-For the grocery items i have decided to use an API from rapid api, if interested see the link https://rapidapi.com/remote-skills-remote-skills-default/api/grocery-pricing-api
+For the grocery items i have decided to use an API from https://dummyJSON.com
+
 Again if YOU NEED HELP reach out,
