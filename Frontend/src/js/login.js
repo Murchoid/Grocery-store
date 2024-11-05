@@ -3,6 +3,7 @@ const registerLink = document.querySelector('.register-link');
 const loginLink = document.querySelector('.login-link');
 
 const signUp = document.querySelector('#signup');
+const logIn = document.querySelector('#login');
 
 
 signUp.addEventListener('submit', async(e)=>{
@@ -40,6 +41,49 @@ signUp.addEventListener('submit', async(e)=>{
             console.error('An error occured: ' + error);
     }
 })
+
+logIn.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const Email = document.querySelector('#Lemail');
+    const Password = document.querySelector('#Lpassword');
+
+    const email = Email.value;
+    const password = Password.value;
+
+    const logInData = {email,password};
+    console.log(logInData);
+
+    try{
+        const response = await fetch('http://localhost:5000/api/login/user',{
+            method: 'POST',
+            headers:{
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(logInData)
+        });
+
+
+        if(response.ok){
+            const result= await response.json();
+            window.location.href='index.html';
+            console.log('Success log in : ', + result);
+        }
+        else if(response.status==401){
+            alert('Wrong password');
+            Password.value='';
+        }
+        else{
+            alert(response.statusText);
+            Password.value='';
+        }
+    }
+    catch(error){
+        console.error('An error occured: ' + error);
+        alert(error);
+    }
+
+})
+
 
 registerLink.onclick = () => {
     wrapper.classList.add('active');
