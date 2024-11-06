@@ -328,3 +328,14 @@ form .linkTxt{
     transform: rotate(-11deg) skewY(-40deg);
     transition-delay: 1.2s;
 }
+
+#message-logIn{
+    display: hidden;
+    color: red;
+
+}
+
+#message-signUp{
+    visibility: hidden;
+    color: red;
+}

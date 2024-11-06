@@ -1,4 +1,4 @@
-window.onload = () => {
+/*window.onload = () => {
   const images = [
     'images/logo.jpg',
     'images/basil.jpg',
@@ -26,7 +26,7 @@ window.onload = () => {
 
   setInterval(changeBackground, 7000);
   fetchItems();
-};
+};*/
 
 const fetchItems = async () => {
   try {
@@ -40,20 +40,20 @@ const fetchItems = async () => {
     console.log(data);
 
     const limitedData = data.data.products.slice(0, 20);
-    const dataForPopolarProds = data.data.products.slice(30, 40);
+    const dataForPopularProds = data.data.products.slice(0, 10);
 
     const itemContainers = document.getElementById('category-container');
     const popItemContainers = document.getElementById('popular-prods');
 
     itemContainers.innerHTML = '';
+    popItemContainers.innerHTML='';
+
+
 
     limitedData.forEach((element) => {
-      const itemElement = document.createElement('div');
-      itemElement.className = 'categories';
-      const popularElement = document.createElement('div');
-      popularElement.className = 'container';
-
-      itemElement.innerHTML = `
+        const itemElement = document.createElement('div');
+        itemElement.className = 'categories';
+      itemElement.innerHTML += `
                     <div class="category">
                             <a href="#">
                                 <img src="${element.images[0]}" alt="${
@@ -67,20 +67,35 @@ const fetchItems = async () => {
                             
                         </div>
                 `;
-
-      popularElement.innerHTML = `
-                    <div class="products">
-                    <div class="product">
-                        <img src="${element.image[1]}" alt="${element.title}">
-                        <h3>${element.title}</h3>
-                        <p>${(element.price * 129) | 0}</p>
-                        <button>Add to Cart</button>
-                    </div>
-                `;
-      itemContainers.appendChild(itemElement);
-      popItemContainers.appendChild(popularElement);
+                itemContainers.appendChild(itemElement);
     });
+
+    
+
+
+    dataForPopularProds.forEach((element) => {
+        const popularElement = document.createElement('div');
+        popItemContainers.className = 'products';
+      popularElement.innerHTML += `
+                      <div class="products">
+                      <div class="product">
+                          <img src="${element.images[0]}" alt="${
+        element.title
+      }">
+                          <h3>${element.title}</h3>
+                          <p>Ksh${(element.price * 129) | 0}</p>
+                          <button>Add to Cart</button>
+                      </div>
+                  `;
+
+                  popItemContainers.appendChild(popularElement);
+    });
+
+    
+
   } catch (error) {
     console.error('An error occured: ' + error);
   }
 };
+
+fetchItems();
