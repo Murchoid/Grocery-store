@@ -1,17 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
+    <title>Nest Mart & Grocery</title>
     <link rel="stylesheet" href="../src/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+    </style>
 </head>
+
 <body>
+    <header>
+        <div class="top-bar">
 
-    <!-- Home page -->
-HOME
+            <div class="top-bar-right">
+                <p>Super Value Deals - Save more with coupons</p>
+            </div>
+        </div>
+        </div>
+        <div class="header-1">
+            <section class=""></section>
+            <div class="logo">
+                <a href="#"><img src="./images/logo.jpg" alt="Bucks grocery store"></a>
+                <p><span style="font-size: 40px; font-style: 
+                initial; color: rgb(5, 231, 137);font-weight: bolder;">Bucks </span><br><span
+                        style="font-weight: bold;font-size: 13px;">Grocery Store</span></p>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products...">
+                <button>Search</button>
+            </div>
+            <div class="header-links">
+                <a href="#"> <img src="/Frontend/public/images/heart.png" alt=""> Wishlist</a>
+                <a href="#"> <img src="/Frontend/public/images/cart.png" alt=""> Cart</a>
+                <a href="#"> <img src="/Frontend/public/images/user-profile.png" alt=""> Account</a>
+            </div>
+        </div>
+        <nav>
+            <div class="navbar">
+                <ul>
+                    <li><a href="#Home">Home</a></li>
+                    <li><a href="#Featured categories">Featured categories</a></li>
+                    <li><a href="#About">About</a></li>
+                    <li><a href="#Contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="Home" id="Home">
+            <div class="container">
+                <h1>Fresh Vegetables Big discount</h1>
+                <p>Save up to 50% off on your first order</p>
+                <form>
+                    <input type="email" placeholder="Your email address">
+                    <button>Subscribe</button>
+                </form>
+            </div>
+        </section>
 
-<a href="/login">Log in</a>
-    
+        <section class="featured-categories">
+            <h2>Featured Categories</h2>
+            <div class="container">
+                
+                <div class="categories" id="category-container">
+                    <div class="category">
+                        <a href="milk.html">
+                            <img src="images/chickenn.jfif" alt="chicken">
+                        </a>
+                            <h3>Chicken</h3>
+                            <p>Ksh 1200.00</p>
+                        
+                    </div>
+                    <div class="category">
+                        <a href="/Frontend/public/me/fruits.html">
+                            <img src="/Frontend/public/images/cheese-burger.jpg" alt="">
+                        </a>
+                        <h3>mmh</h3>
+                        <p>along</p>
+                    </div>
+                    <div class="category">
+                        <a href="/Frontend/public/me/dairy.html">
+                            <img src="/Frontend/public/images/milk.jpg" alt="">
+                        </a>
+                        <h3>Dairy products</h3>
+                    </div>
+                    <div class="category">
+                        <a href="/Frontend/public/me/tea.html">
+                            <img src="/Frontend/public/images/spiced tea.jpg" alt="">
+                        </a>
+                        <h3>Tea spices</h3>
+                    </div>
+                    <div class="category">
+                        <a href="/Frontend/public/me/veges.html">
+                            <img src="/Frontend/public/images/brocoli.jpg" alt="">
+                        </a>
+                        <h3>Vegetables</h3>
+                    </div>
+                    <div class="category">
+                        <a href="/Frontend/public/me/pastries.html">
+                            <img src="/Frontend/public/images/cookie.jpg" alt="">
+                        </a>
+                        <h3>Pastries</h3>
+                    </div>
+                    <div class="category">
+                        <a href="/Frontend/public/me/tuber.html">
+                            <img src="/Frontend/public/images/potato.jpg" alt="">
+                        </a>
+                        <h3>Tuber</h3>
+                    </div>
+                    <div class="category">
+                        <a href="/Frontend/public/me/fish.html">
+                            <img src="/Frontend/public/images/grilled fish.jpg" alt="">
+                        </a>
+                        <h3>Sea food</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="popular-products">
+
+            <h2>Popular Products</h2>
+            
+            <div class="container" id="popular-prods">
+                <div class="products">
+                    <div class="product">
+                        <img src="images/apple.webp" alt="Product 1">
+                        <h3>Vibrant, juicy, sweet red apple</h3>
+                        <p>$28.85</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="product">
+                        <img src="images/logo.jpg" alt="Product 2">
+                        <h3>Versatile, nutritious, crisp, green delight zucchini</h3>
+                        <p>$20.00</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="product">
+                        <img src="images/logo.jpg" alt="Product 2">
+                        <h3>Versatile, nutritious, crisp, green delight zucchini</h3>
+                        <p>$20.00</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="product">
+                        <img src="images/logo.jpg" alt="Product 2">
+                        <h3>Versatile, nutritious, crisp, green delight zucchini</h3>
+                        <p>$20.00</p>
+                        <button>Add to Cart</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="../src/js/index.js"></script>
 </body>
+
 </html>

@@ -20,7 +20,7 @@ signUp.addEventListener('submit', async(e)=>{
 
     try{
 
-        const response = await fetch('http://localhost:5000/api/register/user',{
+        const response = await fetch('https://groceryapi-m4veid9dg-murchoids-projects.vercel.app/api/register/user',{
             method : 'POST',
             headers:{
                 'Content-type': 'application/json'
@@ -31,7 +31,12 @@ signUp.addEventListener('submit', async(e)=>{
         if(response.ok){
             const result = await response.json();
             console.log('Success ' + result);
-           window.location.href = 'logIn.html';
+            Username.value = '';
+            Password.value = '';
+            Email.value = '';
+            wrapper.classList.remove('active');
+
+        
         }
         else{
             console.error('Error: ', response.statusText);

@@ -1,5 +1,311 @@
-/* for testing purposes you can change*/
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-body{
-    background-color: #222;
+.coiny-regular {
+    font-family: "Coiny", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.top-bar {
+    background-color: #463b3b;
+    color: #fff;
+    padding: 10px 0;
+    overflow: hidden;
+}
+
+.top-bar-right p {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    background-color: hsl(122, 21%, 31%);
+    position: absolute;
+    white-space: nowrap;
+    animation: scroll 10s linear infinite;
+
+
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.top-bar-left a:hover,
+.top-bar-right span:hover {
+    color: #ccc;
+}
+
+.header-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    margin-left: 0%;
+}
+
+.logo p {
+    color: #05eba6;
+}
+
+.logo {
+    display: flex;
+    margin-left: 0px;
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-bar button {
+    background-color: #0bcc82;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.header-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #181616;
+}
+
+.header-links a img {
+    width: 20px;
+    height: 20px;
+}
+
+.header-links a:hover {
+    color: #4caf50;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin-left: 20px;
+
+}
+
+nav ul li {
+    margin-right: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #5a4747;
+}
+
+nav ul li a:hover {
+    color: #06df72;
+}
+
+.Home {
+    background-color: #f3f4f6;
+    padding: 50px 0;
+    text-align: center;
+    height: 60vh;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 1s;
+}
+
+.home .container {
+    z-index: 1;
+}
+
+.Home h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #03ff9e;
+}
+
+.Home p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #7de4bc;
+}
+
+.Home form {
+    display: flex;
+    justify-content: center;
+}
+
+.Home input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+}
+
+.Home button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+
+.featured-categories {
+    padding: 50px 0;
+}
+
+.featured-categories h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.category {
+    background-color: #0ce2a2;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.category img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 20%;
+}
+
+.popular-products {
+    padding: 50px 0;
+}
+
+.popular-products h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background-color: #f3f4f6;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.product img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.product h3 {
+    margin-top: 10px;
+}
+
+.product p {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.product button {
+    background-color: #14da4f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* hii inafaa kuwa huko juu but nimeeka hapa */
+.category button {
+    background-color: #134422;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-bar {
+        margin-top: 20px;
+    }
+
+    .header-links {
+        margin-top: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+
+    .categories {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+
+    .products {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
 }
