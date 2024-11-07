@@ -54,7 +54,7 @@
             
             <h2>Order summary</h2>
             <div id="order-items">
-                <table>
+                <table id="table-holder">
                     <thead>
                         <tr>
                             <th>Item</th>
@@ -64,30 +64,7 @@
                         </tr>
                     </thead>
                     <tbody id="item-list">
-                        <tr>
-                            <td>fruits</td>
-                            <td>10</td>
-                            <td>50</td>
-                            <td id="total-fruits">500</td> 
-                        </tr>
-                        <tr>
-                            <td>Veges</td>
-                            <td>1</td>
-                            <td>450</td>
-                            <td id="total-veges">450</td> 
-                        </tr>
-                        <tr>
-                            <td>seafoods</td>
-                            <td>2kg</td>
-                            <td>250</td>
-                            <td id="total-seafoods">500</td> 
-                        </tr>
-                        <tr>
-                            <td>canned</td>
-                            <td>5kg</td>
-                            <td>150</td>
-                            <td id="total-canned">750</td> 
-                        </tr>
+                        <!--DOM manipulation here-->                       
                     </tbody>
                 </table>
             </div>
@@ -134,39 +111,37 @@
         </form>
    
         <script>
-            // Function to calculate the total of the order items
-            function calculateTotal() {
-                const quantities = {
-                    fruits: 10,
-                    veges: 1,
-                    seafoods: 2,
-                    canned: 5
-                };
+            let cart = [];
+            const storedCart = localStorage.getItem('cart');
+  if (storedCart) {
+    cart = JSON.parse(storedCart);
+  }
 
-                const prices = {
-                    fruits: 50,
-                    veges: 450,
-                    seafoods: 250,
-                    canned: 150
-                };
+const tableHolder = document.querySelector('#item-list');
+let total =0;
 
-                const totals = {
-                    fruits: quantities.fruits * prices.fruits,
-                    veges: quantities.veges * prices.veges,
-                    seafoods: quantities.seafoods * prices.seafoods,
-                    canned: quantities.canned * prices.canned
-                };
+const fetchItemsOrdered = ()=>{
+    cart.forEach(item => {
+    
+    const itemsOrderd = `
+                  
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${item.quantity}</td>
+                            <td>Ksh.${item.price}</td>
+                            <td id="total-fruits">Ksh.${item.quantity * item.price}</td> 
+                        </tr>
+                        
+                    
+    `;
+    tableHolder.innerHTML +=itemsOrderd;
+    total += parseInt((item.price * item.quantity));
+})
+}
 
-                // Update the item total in the table
-                document.getElementById('total-fruits').textContent = totals.fruits;
-                document.getElementById('total-veges').textContent = totals.veges;
-                document.getElementById('total-seafoods').textContent = totals.seafoods;
-                document.getElementById('total-canned').textContent = totals.canned;
+fetchItemsOrdered();
 
-                // Calculate the grand total
-                const grandTotal = totals.fruits + totals.veges + totals.seafoods + totals.canned;
-                document.getElementById('grand-total').textContent = grandTotal;
-            }
+            
 
             // Function to calculate delivery cost
             function calculateDeliveryCost() {
@@ -190,10 +165,18 @@
 
                 if (deliveryCost !== undefined) {
                     document.getElementById("delivery-cost").textContent = deliveryCost;
+                    total+=deliveryCost;
                 } else {
                     alert("Please select a delivery location.");
                 }
             }
+
+               // Calculate the grand total
+            function calculateTotal() {
+                console.log(total);
+        
+                    document.getElementById('grand-total').textContent = total;
+                }
 
             // Function to submit the form and complete the purchase
             function submitForm(event) {
@@ -234,5 +217,6 @@
     
             }
         </script>
+        <script src="../src/js/checkout.js"></script>
     </body>
 </html>
