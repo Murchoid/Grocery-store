@@ -25,9 +25,10 @@ window.onload = () => {
   }
   setInterval(changeBackground, 7000);
   fetchItems();
+  removeEmpty();
 };
 
-import { addToCart, saveToCart, removeFromCart, updateUI, loadCart } from "./addTocart.js";
+import { addToCart, saveToCart, removeFromCart, updateUI, loadCart, removeEmpty } from "./addTocart.js";
 
 
 
@@ -61,7 +62,7 @@ const cartDets =  ()=>{
             const productId = productElement.id;
             const productName = productElement.querySelector('.product-name').innerText;
             const productPrice = parseFloat(productElement.querySelector('.product-price').innerText.replace('Ksh', ''));
-            const productQuantity = parseInt(productElement.querySelector('.product-quantity').innerText);
+            const productQuantity = 1;
             const productImage = productElement.querySelector('.product-image').src;
 
              const product = {
@@ -114,31 +115,25 @@ const fetchItems = async () => {
                             </a>
                                 <h3 class="product-name">${element.title}</h3>
                                 <p class="product-price">Ksh${(element.price * 129) | 0}</p>
-                                <br>Quantity: 
-                                <strong class="product-quantity">1</strong>
+                              
                                 <button class='add-to-cart'>Add to Cart</button>
 
                             
                         </div>
                 `;
                 itemContainers.appendChild(itemElement);
-    });
-
-    
 
 
-    dataForPopularProds.forEach((element) => {
-        const popularElement = document.createElement('div');
+                const popularElement = document.createElement('div');
         popItemContainers.className = 'products';
       popularElement.innerHTML += `
                       <div class="product product-item" id='${element.id}' >
                           <img src="${element.images[0]}" alt="${
         element.title
       }" class="product-image">
-                          <h3>${element.title}</h3>
-                          <p>Ksh${(element.price * 129) | 0}</p>
-                          <br>Quantity:
-                          <strong class="product-quantity">1</strong>
+                          <h3 class="product-name>${element.title}</h3>
+                          <p class="product-price">Ksh${(element.price * 129) | 0}</p>
+                         
                           <button class='add-to-cart'>Add to Cart</button>
                       </div>
                   `;
