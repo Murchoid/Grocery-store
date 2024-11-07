@@ -1,16 +1,16 @@
-/*window.onload = () => {
+window.onload = () => {
   const images = [
-    'images/logo.jpg',
-    'images/basil.jpg',
-    'images/lemon.jpg',
-    'images/sugar.jpg',
-    '/Frontend/public/images/cookiiee.jpg',
-    '/Frontend/public/images/donut.jpg',
-    '/Frontend/public/images/grilled fish.jpg',
-    '/Frontend/public/images/lime.jpg',
-    '/Frontend/public/images/cinamon.jpg',
-    '/Frontend/public/images/olive.jpg',
-    '/Frontend/public/images/burg.jpg',
+    '../src/images/logo.jpg',
+    '../src/images/basil.jpg',
+    '../src/images/lemon.jpg',
+    '../src/images/sugar.jpg',
+    '../src/images/cookiiee.jpg',
+    '../src/images/donut.jpg',
+    '../src/images/grilled fish.jpg',
+    '../src/images/lime.jpg',
+    '../src/images/cinamon.jpg',
+    '../src/images/olive.jpg',
+    '../src/images/burg.jpg',
   ];
 
   let i = 0;
@@ -23,10 +23,42 @@
 
     document.querySelector('.Home').style.backgroundImage = `url(${images[i]})`;
   }
-
   setInterval(changeBackground, 7000);
   fetchItems();
-};*/
+};
+
+import { addToCart, saveToCart, removeFromCart, updateUI, loadCart } from "./addTocart.js";
+
+
+const cartDets =  ()=>{
+  loadCart();
+
+  const cartBtn = document.querySelectorAll('.container');
+
+  cartBtn.forEach(button => button.addEventListener('click', (event)=>{
+    console.log('add to cart clicked');
+            const productElement = event.target.closest('.product-item');
+            const productId = productElement.id;
+            const productName = productElement.querySelector('.product-name').innerText;
+            const productPrice = parseFloat(productElement.querySelector('.product-price').innerText.replace('Ksh', ''));
+            const productQuantity = parseInt(productElement.querySelector('.product-quantity').innerText);
+            const productImage = productElement.querySelector('.product-image').src;
+
+             const product = {
+                id: productId,
+                name: productName,
+                price: productPrice,
+                quantity: productQuantity,
+                image: productImage
+            };
+
+            addToCart(product);
+
+
+  }))
+}
+
+cartDets();
 
 const fetchItems = async () => {
   try {
@@ -52,17 +84,19 @@ const fetchItems = async () => {
 
     limitedData.forEach((element) => {
         const itemElement = document.createElement('div');
-        itemElement.className = 'categories';
+        itemElement.className = 'categories product-item';
       itemElement.innerHTML += `
-                    <div class="category">
+                    <div class="category product-item" id='${element.id}'>
                             <a href="#">
                                 <img src="${element.images[0]}" alt="${
         element.title
-      }">
+      }" class="product-image">
                             </a>
-                                <h3>${element.title}</h3>
-                                <p>Ksh${(element.price * 129) | 0}</p>
-                                <button>Add to Cart</button>
+                                <h3 class="product-name">${element.title}</h3>
+                                <p class="product-price">Ksh${(element.price * 129) | 0}</p>
+                                <br>Quantity: 
+                                <strong class="product-quantity">1</strong>
+                                <button class='add-to-cart'>Add to Cart</button>
 
                             
                         </div>
@@ -77,14 +111,15 @@ const fetchItems = async () => {
         const popularElement = document.createElement('div');
         popItemContainers.className = 'products';
       popularElement.innerHTML += `
-                      <div class="products">
-                      <div class="product">
+                      <div class="product product-item" id='${element.id}' >
                           <img src="${element.images[0]}" alt="${
         element.title
-      }">
+      }" class="product-image">
                           <h3>${element.title}</h3>
                           <p>Ksh${(element.price * 129) | 0}</p>
-                          <button>Add to Cart</button>
+                          <br>Quantity:
+                          <strong class="product-quantity">1</strong>
+                          <button class='add-to-cart'>Add to Cart</button>
                       </div>
                   `;
 
@@ -97,5 +132,3 @@ const fetchItems = async () => {
     console.error('An error occured: ' + error);
   }
 };
-
-fetchItems();

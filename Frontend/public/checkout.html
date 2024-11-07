@@ -1,11 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>checkout</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Check out Page</title>
+      
+        <style>
+            body { 
+                background-color: hsl(120, 20%, 85%);
+            }
+            h1, h2, h3, h4, h5 {
+                color: hsl(180, 3%, 7%);
+                text-align:center;
+            }
+            h1 {
+                margin-top: 20px;
+                font-size: 1.7em;
+            }
+            h3,h4,h5 {
+                text-align: left;
+                margin-top: 15px;
+            }
+            .complete-purchase{
+                background-color: rgb(6, 73, 9);
+                color: aliceblue;
+            }
+            div {
+                margin: 20px auto;
+                padding: 15px;
+                max-width: 600px;
+                background-color: hsl(210, 20%, 90%);
+                border-radius: 8px;
+            }
+        </style>
+    </head>
+    <body>
     
-</body>
+         <h1>Checkout</h1>
+         <!-- Wrap the whole content in a form -->
+         <form id="checkout-form">
+            <div>
+                <label>Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label>Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label>Phone no:</label>
+                <input type="text" id="phone-no" name="phone-no" required>
+            </div>
+            
+            <h2>Order summary</h2>
+            <div id="order-items">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price (KES)</th>
+                            <th>Total (KES)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="item-list">
+                        <tr>
+                            <td>fruits</td>
+                            <td>10</td>
+                            <td>50</td>
+                            <td id="total-fruits">500</td> 
+                        </tr>
+                        <tr>
+                            <td>Veges</td>
+                            <td>1</td>
+                            <td>450</td>
+                            <td id="total-veges">450</td> 
+                        </tr>
+                        <tr>
+                            <td>seafoods</td>
+                            <td>2kg</td>
+                            <td>250</td>
+                            <td id="total-seafoods">500</td> 
+                        </tr>
+                        <tr>
+                            <td>canned</td>
+                            <td>5kg</td>
+                            <td>150</td>
+                            <td id="total-canned">750</td> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="delivery-locations">
+                <h3>Choose your nearby location:</h3>
+                <label>
+                    <input type="radio" name="location" value="Kutus"> Kutus
+                </label>
+                <label>
+                    <input type="radio" name="location" value="Keruguya"> Keruguya
+                </label>
+                <label>
+                    <input type="radio" name="location" value="Embu"> Embu
+                </label>
+                <label>
+                    <input type="radio" name="location" value="Nyeri"> Nyeri
+                </label>
+            </div> 
+            
+            <div>
+                <h4>Delivery Cost: <span id="delivery-cost">0</span></h4>
+                <button type="button" onclick="calculateDeliveryCost()">Calculate Delivery</button>
+            </div>
+            
+            <div>
+                <h4>Grand Total: <span id="grand-total">0</span></h4>
+                <button type="button" onclick="calculateTotal()">Calculate Total</button>
+            </div>
+            
+            <div>
+                <h5>Payment Section</h5>
+                <label for="payment-method">Choose Payment Method:</label>
+                <select id="payment-method" name="payment-method">
+                    <option value="m-pesa">M-Pesa</option>
+                    <option value="airtel-money">Airtel Money</option>
+                </select>
+            </div>
+            
+            <!-- Submit button for form submission -->
+            <div class="complete-purchase">
+                <button type="submit" onclick="submitForm(event)">Complete Purchase</button>
+            </div>
+        </form>
+   
+        <script>
+            // Function to calculate the total of the order items
+            function calculateTotal() {
+                const quantities = {
+                    fruits: 10,
+                    veges: 1,
+                    seafoods: 2,
+                    canned: 5
+                };
+
+                const prices = {
+                    fruits: 50,
+                    veges: 450,
+                    seafoods: 250,
+                    canned: 150
+                };
+
+                const totals = {
+                    fruits: quantities.fruits * prices.fruits,
+                    veges: quantities.veges * prices.veges,
+                    seafoods: quantities.seafoods * prices.seafoods,
+                    canned: quantities.canned * prices.canned
+                };
+
+                // Update the item total in the table
+                document.getElementById('total-fruits').textContent = totals.fruits;
+                document.getElementById('total-veges').textContent = totals.veges;
+                document.getElementById('total-seafoods').textContent = totals.seafoods;
+                document.getElementById('total-canned').textContent = totals.canned;
+
+                // Calculate the grand total
+                const grandTotal = totals.fruits + totals.veges + totals.seafoods + totals.canned;
+                document.getElementById('grand-total').textContent = grandTotal;
+            }
+
+            // Function to calculate delivery cost
+            function calculateDeliveryCost() {
+                const locations = document.getElementsByName("location");
+                let selectedLocation = "";
+                for (let location of locations) {
+                    if (location.checked) {
+                        selectedLocation = location.value;
+                        break;
+                    }
+                }
+
+                const deliveryCosts = {
+                    "Kutus": 100,
+                    "Nyeri": 250,
+                    "Embu": 200,
+                    "Keruguya": 150
+                };
+
+                const deliveryCost = deliveryCosts[selectedLocation];
+
+                if (deliveryCost !== undefined) {
+                    document.getElementById("delivery-cost").textContent = deliveryCost;
+                } else {
+                    alert("Please select a delivery location.");
+                }
+            }
+
+            // Function to submit the form and complete the purchase
+            function submitForm(event) {
+                event.preventDefault();
+                
+                // Get form values
+                const form = document.getElementById('checkout-form');
+                const name = form.name.value;
+                const email = form.email.value;
+                const phoneNo = form['phone-no'].value;
+                const paymentMethod = form['payment-method'].value;
+                const location = form.querySelector('input[name="location"]:checked')?.value;
+                const deliveryCost = document.getElementById('delivery-cost').textContent;
+                const grandTotal = document.getElementById('grand-total').textContent;
+
+                // Validate if all required fields are filled
+                if (!name || !email || !phoneNo || !location || !deliveryCost || !grandTotal) {
+                    alert("Please complete all fields before submitting.");
+                    return;
+                }
+
+                // Collect order details into an object
+                const orderData = {
+                    name,
+                    email,
+                    phoneNo,
+                    location,
+                    deliveryCost,
+                    grandTotal,
+                    paymentMethod
+                };
+
+                console.log("Order Submitted:", orderData);
+
+                // Simulate a successful order submission
+                alert("Purchase completed successfully!\n\nOrder Details:\n" + JSON.stringify(orderData, null, 2));
+
+    
+            }
+        </script>
+    </body>
 </html>
