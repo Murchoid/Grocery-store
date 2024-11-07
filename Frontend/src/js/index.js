@@ -30,6 +30,26 @@ window.onload = () => {
 import { addToCart, saveToCart, removeFromCart, updateUI, loadCart } from "./addTocart.js";
 
 
+
+let iconCart = document.querySelector('.icon-cart');
+let closeCart = document.querySelector('.close');
+let checkout = document.querySelector('.checkout');
+let body = document.querySelector('.body');
+
+iconCart.addEventListener('click',() => {
+    body.classList.toggle('showCart')
+});
+
+closeCart.addEventListener('click', () => {
+    body.classList.toggle('showCart')
+});
+
+checkout.addEventListener('click',() => {
+  window.location.href='./checkout.html';
+});
+
+
+
 const cartDets =  ()=>{
   loadCart();
 
@@ -87,7 +107,7 @@ const fetchItems = async () => {
         itemElement.className = 'categories product-item';
       itemElement.innerHTML += `
                     <div class="category product-item" id='${element.id}'>
-                            <a href="#">
+                            <a href="">
                                 <img src="${element.images[0]}" alt="${
         element.title
       }" class="product-image">
