@@ -83,6 +83,7 @@ logIn.addEventListener('submit', async (e)=>{
 
         if(response.ok){
             const result= await response.json();
+            localStorage.setItem('userEmail', email);
             window.location.href='index.html';
             console.log('Success log in : ', + result);
         }

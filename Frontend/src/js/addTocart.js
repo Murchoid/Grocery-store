@@ -9,24 +9,30 @@ const loadCart = () => {
     cart = JSON.parse(storedCart);
     updateUI(cart);
   }
-  console.log(cart);
+  console.log(cart);// for debugging purposes
 };
 
 const saveToCart = () => {
   localStorage.setItem('cart', JSON.stringify(cart));
+  
 };
 
+
+//add item to cart
 const addToCart = (product) => {
   const existingProd = cart.find((item) => item.id == product.id);
   if (existingProd) {
     existingProd.quantity += 1;
   } else {
     cart.push(product);
+    alert('Item successful saved to cart');
   }
   saveToCart();
   updateUI(cart);
 };
 
+
+//updated the cart items
 const updateUI = (cart) => {
     cartUI.innerHTML='';
     const UI = 'New items here: ';

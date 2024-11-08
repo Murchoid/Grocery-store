@@ -99,21 +99,19 @@
         </div>
         
         <form action="#" method="POST">
-            <div class="info-group">
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-            </div>
+           
             <div class="info-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <strong id="email"><a href="logIn.html">Please sign in</a></strong>
             </div>
-            <div class="info-group">
-                <label for="phone">Phone:</label>
-                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
-            </div>
-            
-            <button type="submit">Save Changes</button>
         </form>
+        <div>
+            <h2>Orderd Items</h2>
+            <div id="orderd">
+                <p>You have not yet orderd anything</p>
+                <span> <a href="index.html"> Home</a></span>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -121,6 +119,62 @@
             const profilePhoto = document.getElementById('profilePhoto');
             profilePhoto.src = URL.createObjectURL(event.target.files[0]);
         }
+
+        const userEmail = document.getElementById('email');
+        const email = localStorage.getItem('userEmail');
+        if(email){
+            userEmail.textContent = email;
+        }
+
+        const orderdItems = document.getElementById('orderd');
+        const orderd = localStorage.getItem('order');
+        const display = JSON.parse(orderd);
+        console.log(display);//for debugging
+            if(display){
+                orderdItems.innerHTML='';
+                const orderP=document.createElement('div');
+            orderP.innerHTML = `
+                <p>
+                 <strong>Name :</strong> 
+                 <span>${display.Name}</span>
+                <p>
+                
+                <p>
+                 <strong>Email :</strong> 
+                 <span>${display.Email}</span>
+                <p>
+                
+                <p>
+                 <strong>Phone :</strong> 
+                 <span>${display.Phone}</span>
+                <p>
+                
+                <p>
+                 <strong>Location :</strong> 
+                 <span>${display.Location}</span>
+                <p>
+
+
+                <p>
+                 <strong>Delivery cost :</strong> 
+                 <span>${display.Delivery}</span>
+                <p>
+
+                <p>
+                 <strong>Grand Total :</strong> 
+                 <span>${display.Grand}</span>
+                <p>
+
+                <p>
+                 <strong>Payment Method :</strong> 
+                 <span>${display.PayMethod}</span>
+                <p>
+                    <span> <a href="index.html"> Home</a></span>
+            `;
+
+            orderdItems.appendChild(orderP);
+            }
+
     </script>
 </body>
 </html>
