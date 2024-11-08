@@ -352,7 +352,8 @@ svg {
     position:relative;
 
 }
-    
+
+/*fro cart button */
 .header-1 .icon-cart span {
     display: flex;
     width: 30px;

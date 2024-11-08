@@ -9,14 +9,12 @@ const loadCart = () => {
     cart = JSON.parse(storedCart);
     updateUI(cart);
   }
-  console.log(cart);// for debugging purposes
+  console.log(cart); // for debugging purposes
 };
 
 const saveToCart = () => {
   localStorage.setItem('cart', JSON.stringify(cart));
-  
 };
-
 
 //add item to cart
 const addToCart = (product) => {
@@ -31,17 +29,16 @@ const addToCart = (product) => {
   updateUI(cart);
 };
 
-
 //updated the cart items
 const updateUI = (cart) => {
-    cartUI.innerHTML='';
-    const UI = 'New items here: ';
-    console.log(UI + cart);
-    let totalINCart = 0;
+  cartUI.innerHTML = '';
+  const UI = 'New items here: ';
+  console.log(UI + cart);
+  let totalINCart = 0;
 
-    cart.forEach((item) => {
+  cart.forEach((item) => {
     const holdCart = document.createElement('div');
-      holdCart.innerHTML = `
+    holdCart.innerHTML = `
             <div class="item" id="${item.id}">
                                <div class="image" >
                                    <img src="${item.image}" alt="" class="imageId">
@@ -60,11 +57,11 @@ const updateUI = (cart) => {
                                </div>
                            </div>
         `;
-        cartUI.appendChild(holdCart);
-      totalINCart += item.quantity;
-    });
-    toatlQuantityInCart.innerText = totalINCart;
-   if(cart=='') {
+    cartUI.appendChild(holdCart);
+    totalINCart += item.quantity;
+  });
+  toatlQuantityInCart.innerText = totalINCart;
+  if (cart == '') {
     const UI = 'No items';
     console.log(UI + cart);
     cartUI.innerHTML = '<p>No ites added yet</p>';
@@ -99,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         name: prodName,
         price: prodPrice,
         quantity: prodQuant,
-        image: prodImage
+        image: prodImage,
       };
 
       addToCart(product);
@@ -107,6 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+//this funciton helps remove the items that are quantity 0 from our cart
 const removeEmpty = () => {
   cart = cart.filter((item) => item.quantity > 0);
   saveToCart();
@@ -121,7 +120,7 @@ const removeFromCart = (product) => {
   if (existRemove.quantity < 0) {
     cart = cart.filter((item) => item !== existRemove.id);
     updateUI(cart);
-}
+  }
 
   saveToCart();
   updateUI(cart);

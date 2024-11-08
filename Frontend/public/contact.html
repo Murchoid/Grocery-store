@@ -1,91 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f9f0; /* Light green background */
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            color: #4CAF50; /* Dark green */
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .member {
-            background-color: #e8f5e9; /* Light green card */
-            border: 1px solid #4CAF50; /* Dark green border */
-            border-radius: 8px;
-            margin: 10px;
-            padding: 15px;
-            width: 200px;
-            text-align: center;
-            transition: transform 0.2s;
-        }
-        .member:hover {
-            transform: scale(1.05);
-        }
-        .member img {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f9f0; /* Light green background */
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #4caf50; /* Dark green */
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .member {
+        background-color: #e8f5e9; /* Light green card */
+        border: 1px solid #4caf50; /* Dark green border */
+        border-radius: 8px;
+        margin: 10px;
+        padding: 15px;
+        width: 200px;
+        text-align: center;
+        transition: transform 0.2s;
+      }
+      .member:hover {
+        transform: scale(1.05);
+      }
+      .member img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <h1>Contact Us</h1>
     <div class="container" id="members-container">
-        <!-- Members will be dynamically added here hope mtarada nlicopy from About us page-->
+      <!-- Members will be dynamically added here hope mtarada nlicopy from About us page-->
     </div>
-    <footer style="background-color: #4CAF50; color: white; text-align: center; padding: 20px;">
-        <p style="margin: 0;">&copy; 2024 Your Company Name. All Rights Reserved.</p>
+    <footer
+      style="
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      "
+    >
+      <p style="margin: 0">
+        &copy; 2024 Misheveve groceries. All Rights Reserved.
+      </p>
     </footer>
     <script>
-        // Array of member data
-        const members = [
-            { name: "Michael Kamau", imageUrl: "../src/images/Mike.png" },
-            { name: "Alvin Odhiambo", imageUrl: "../src/images/Alvo.png" },
-            { name: "Charlyne Wanjiru", imageUrl: "https://via.placeholder.com/100" },
-            { name: "Doris Nduta", imageUrl: "https://via.placeholder.com/100" },
-            { name: "Rahim Ashir", imageUrl: "../src/images/Rahim.jpg" },
-            { name: "Lilian Kibunja", imageUrl: "https://via.placeholder.com/100" },
-            { name: "Harmony Rita", imageUrl: "https://via.placeholder.com/100" },
-            { name: "Grim", imageUrl: "../src/images/Stew.jpg" },
-            { name: "Vincent Kioko", imageUrl: "https://via.placeholder.com/100" },
-            { name: "Kevin Mwithiga", imageUrl: "https://via.placeholder.com/100" }
-        ];
+      // Array of member data
+      const members = [
+        { name: 'Michael Kamau', imageUrl: '../src/images/Mike.png' },
+        { name: 'Alvin Odhiambo', imageUrl: '../src/images/Alvo.png' },
+        {
+          name: 'Charlyne Wanjiru',
+          imageUrl: 'https://via.placeholder.com/100',
+        },
+        { name: 'Doris Nduta', imageUrl: 'https://via.placeholder.com/100' },
+        { name: 'Rahim Ashir', imageUrl: '../src/images/Rahim.jpg' },
+        { name: 'Lilian Kibunja', imageUrl: 'https://via.placeholder.com/100' },
+        { name: 'Harmony Rita', imageUrl: 'https://via.placeholder.com/100' },
+        { name: 'Grim', imageUrl: '../src/images/Stew.jpg' },
+        { name: 'Vincent Kioko', imageUrl: 'https://via.placeholder.com/100' },
+        { name: 'Kevin Mwithiga', imageUrl: 'https://via.placeholder.com/100' },
+      ];
 
-        // Function to render members
-        function renderMembers() {
-            const container = document.getElementById('members-container');
-            
-            members.forEach(member => {
-                const memberDiv = document.createElement('div');
-                memberDiv.className = 'member';
-                
-                memberDiv.innerHTML = `
+      // Function to render members
+      function renderMembers() {
+        const container = document.getElementById('members-container');
+
+        members.forEach((member) => {
+          const memberDiv = document.createElement('div');
+          memberDiv.className = 'member';
+
+          memberDiv.innerHTML = `
                     <img src="${member.imageUrl}" alt="${member.name}">
                     <h3>${member.name}</h3>
                     <h4>We are here tell us</h4>
                 `;
-                
-                container.appendChild(memberDiv);
-            });
-        }
 
-        // Call the function to render members on page load
-        window.onload = renderMembers;
+          container.appendChild(memberDiv);
+        });
+      }
+
+      // Call the function to render members on page load
+      window.onload = renderMembers;
     </script>
-
-</body>
+  </body>
 </html>

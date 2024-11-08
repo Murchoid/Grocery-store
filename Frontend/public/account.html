@@ -1,142 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Account Page</title>
     <style>
-        /* Basic Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      /* Basic Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+      }
 
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      }
 
-        h2 {
-            color: #4CAF50;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+      h2 {
+        color: #4caf50;
+        text-align: center;
+        margin-bottom: 20px;
+      }
 
-        .profile-photo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+      .profile-photo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+      }
 
-        .profile-photo img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid #4CAF50;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
+      .profile-photo img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 4px solid #4caf50;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
 
-        .profile-photo input[type="file"] {
-            margin-top: 10px;
-            padding: 5px;
-        }
+      .profile-photo input[type='file'] {
+        margin-top: 10px;
+        padding: 5px;
+      }
 
-        .info-group {
-            margin-bottom: 15px;
-        }
+      .info-group {
+        margin-bottom: 15px;
+      }
 
-        label {
-            font-weight: bold;
-            color: #666;
-        }
+      label {
+        font-weight: bold;
+        color: #666;
+      }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+      input[type='text'],
+      input[type='email'],
+      input[type='tel'] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
 
-        button:hover {
-            background-color: #45a049;
-        }
+      button:hover {
+        background-color: #45a049;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h2>Account Page</h2>
-        
-        <div class="profile-photo">
-            <img src="default-profile.png" alt="Profile Photo" id="profilePhoto">
-            <input type="file" accept="image/*" onchange="previewPhoto(event)">
+      <h2>Account Page</h2>
+
+      <div class="profile-photo">
+        <img src="default-profile.png" alt="Profile Photo" id="profilePhoto" />
+        <input type="file" accept="image/*" onchange="previewPhoto(event)" />
+      </div>
+
+      <form action="#" method="POST">
+        <div class="info-group">
+          <label for="email">Email:</label>
+          <strong id="email"><a href="logIn.html">Please sign in</a></strong>
         </div>
-        
-        <form action="#" method="POST">
-           
-            <div class="info-group">
-                <label for="email">Email:</label>
-                <strong id="email"><a href="logIn.html">Please sign in</a></strong>
-            </div>
-        </form>
-        <div>
-            <h2>Orderd Items</h2>
-            <div id="orderd">
-                <p>You have not yet orderd anything</p>
-                <span> <a href="index.html"> Home</a></span>
-            </div>
+      </form>
+      <div>
+        <h2>Orderd Items</h2>
+        <div id="orderd">
+          <p>You have not yet orderd anything</p>
+          <span> <a href="index.html"> Home</a></span>
         </div>
+      </div>
     </div>
 
-    <footer style="background-color: #4CAF50; color: white; text-align: center; padding: 20px;">
-        <p style="margin: 0;">&copy; 2024 Your Company Name. All Rights Reserved.</p>
+    <footer
+      style="
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      "
+    >
+      <p style="margin: 0">
+        &copy; 2024 Your Company Name. All Rights Reserved.
+      </p>
     </footer>
     <script>
-        function previewPhoto(event) {
-            const profilePhoto = document.getElementById('profilePhoto');
-            profilePhoto.src = URL.createObjectURL(event.target.files[0]);
-        }
+      function previewPhoto(event) {
+        const profilePhoto = document.getElementById('profilePhoto');
+        profilePhoto.src = URL.createObjectURL(event.target.files[0]);
+      }
 
-        const userEmail = document.getElementById('email');
-        const email = localStorage.getItem('userEmail');
-        if(email){
-            userEmail.textContent = email;
-        }
+      const userEmail = document.getElementById('email');
+      const email = localStorage.getItem('userEmail');
+      if (email) {
+        userEmail.textContent = email;
+      }
 
-        const orderdItems = document.getElementById('orderd');
-        const orderd = localStorage.getItem('order');
-        const display = JSON.parse(orderd);
-        console.log(display);//for debugging
-            if(display){
-                orderdItems.innerHTML='';
-                const orderP=document.createElement('div');
-            orderP.innerHTML = `
+      const orderdItems = document.getElementById('orderd');
+      const orderd = localStorage.getItem('order');
+      const display = JSON.parse(orderd);
+      console.log(display); //for debugging
+
+      //I load data dynamically if they exist
+      if (display) {
+        orderdItems.innerHTML = '';
+        const orderP = document.createElement('div');
+        orderP.innerHTML = `
                 <p>
                  <strong>Name :</strong> 
                  <span>${display.Name}</span>
@@ -175,9 +185,8 @@
                     <span> <a href="index.html"> Home</a></span>
             `;
 
-            orderdItems.appendChild(orderP);
-            }
-
+        orderdItems.appendChild(orderP);
+      }
     </script>
-</body>
+  </body>
 </html>
