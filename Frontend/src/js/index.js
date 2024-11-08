@@ -36,6 +36,8 @@ let iconCart = document.querySelector('.icon-cart');
 let closeCart = document.querySelector('.close');
 let checkout = document.querySelector('.checkout');
 let body = document.querySelector('.body');
+const search = document.getElementById('search-item');
+const searchBtn = document.getElementById('search');
 
 iconCart.addEventListener('click',() => {
     body.classList.toggle('showCart')
@@ -93,7 +95,6 @@ const fetchItems = async () => {
     console.log(data);
 
     const limitedData = data.data.products.slice(0, 20);
-    const dataForPopularProds = data.data.products.slice(0, 10);
 
     const itemContainers = document.getElementById('category-container');
     const popItemContainers = document.getElementById('popular-prods');
@@ -147,3 +148,86 @@ const fetchItems = async () => {
     console.error('An error occured: ' + error);
   }
 };
+
+
+const searchItem = async (searchThis) =>{
+  try {
+    const response = await fetch('http://localhost:5000/api/search',{
+      method: 'POST',
+      body: JSON.stringify({searchThis}),
+      headers:{
+        'Content-type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      return console.error('Unable to fetch items');
+    }
+    const data = await response.json();
+
+    console.log(data);
+
+    const limitedData = data.data.products.slice(0, 20);
+
+    const itemContainers = document.getElementById('category-container');
+    const popItemContainers = document.getElementById('popular-prods');
+
+    itemContainers.innerHTML = '';
+    popItemContainers.innerHTML='';
+
+
+
+    limitedData.forEach((element) => {
+      console.log(element.lenth)
+        const itemElement = document.createElement('div');
+        itemElement.className = 'categories product-item';
+      itemElement.innerHTML += `
+                    <div class="category product-item" id='${element.id}'>
+                            <a href="">
+                                <img src="${element.images[0]}" alt="${
+        element.title
+      }" class="product-image">
+                            </a>
+                                <h3 class="product-name">${element.title}</h3>
+                                <p class="product-price">Ksh${(element.price * 129) | 0}</p>
+                              
+                                <button class='add-to-cart'>Add to Cart</button>
+
+                            
+                        </div>
+                `;
+                itemContainers.appendChild(itemElement);
+
+
+                const popularElement = document.createElement('div');
+        popItemContainers.className = 'products';
+      popularElement.innerHTML += `
+                      <div class="product product-item" id='${element.id}' >
+                          <img src="${element.images[0]}" alt="${
+        element.title
+      }" class="product-image">
+                          <h3 class="product-name>${element.title}</h3>
+                          <p class="product-price">Ksh${(element.price * 129) | 0}</p>
+                         
+                          <button class='add-to-cart'>Add to Cart</button>
+                      </div>
+                  `;
+
+                  popItemContainers.appendChild(popularElement);
+    });
+
+    
+
+  } catch (error) {
+    console.error('An error occured: ' + error);
+  }
+}
+
+searchBtn.addEventListener('click', ()=>{
+  const nowSearch = search.value;
+  if(nowSearch){
+    searchItem(nowSearch);
+    search.value='';
+  }
+
+});
