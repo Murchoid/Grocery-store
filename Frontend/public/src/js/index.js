@@ -185,7 +185,6 @@ const searchItem = async (searchThis) => {
     popItemContainers.innerHTML = '';
 
     limitedData.forEach((element) => {
-      console.log(element.lenth);
       const itemElement = document.createElement('div');
       itemElement.className = 'categories product-item';
       itemElement.innerHTML += `
