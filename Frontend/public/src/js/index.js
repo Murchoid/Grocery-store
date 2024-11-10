@@ -93,7 +93,7 @@ cartDets();
 
 const fetchItems = async () => {
   try {
-    const response = await fetch('https://groceryapi-murchoid-murchoids-projects.vercel.app/api/items');
+    const response = await fetch('https://grocery-api-olive.vercel.app/api/items');
 
     if (!response.ok) {
       return console.error('Unable to fetch items');
